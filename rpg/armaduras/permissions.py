@@ -1,13 +1,9 @@
 from rest_framework.permissions import BasePermission, SAFE_METHODS
 
 class EhDonoOuAdmin(BasePermission):
-
-
-    def tem_Permissao(self, request, view, obj):
+    def tem_permissao(self, request, view, obj):
         if request.user.is_staff:
             return True
-
         if request.method in SAFE_METHODS:
             return True
-        
         return obj.dono == request.user

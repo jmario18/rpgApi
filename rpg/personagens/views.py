@@ -17,4 +17,4 @@ class ViewSetPersonagem(viewsets.ModelViewSet):
         return Personagem.objects.filter(owner=self.request.user)
     
     def perform_create(self, serializer):
-        serializer.save(owner=self.request.user)
+        serializer.save(dono=self.request.user)
