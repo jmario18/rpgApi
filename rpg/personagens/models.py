@@ -10,6 +10,7 @@ class Personagem(models.Model):
     xp = models.IntegerField(default=0)
     #class1 = models.ForeignKey()
     #class2 = models.ForeignKey()
+    backstory = models.CharField(max_length=10000, blank=True)
 
     def __str__(self):
         return self.nome

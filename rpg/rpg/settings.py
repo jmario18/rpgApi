@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'personagens',
     'rest_framework.authtoken',
     'armaduras',
+    'armas',
 ]
 
 REST_FRAMEWORK = {

@@ -14,6 +14,8 @@ class Armadura(models.Model):
     tipo = models.CharField(max_length=10, choices=TIPOS_ARMADURA)
     classeDeArmadura = models.PositiveIntegerField()
     peso = models.FloatField(null=True, blank=True)
+    extra = models.CharField(blank=True, max_length=5000)
+
 
     def __str__(self):
         return self.nome
