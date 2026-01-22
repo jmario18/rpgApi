@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'armaduras',
     'armas',
     'itens',
+    'talentos',
 ]
 
 REST_FRAMEWORK = {
