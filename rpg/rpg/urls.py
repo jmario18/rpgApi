@@ -26,4 +26,5 @@ urlpatterns = [
     path('api/', include('armaduras.urls')),
     path('api/', include('itens.urls')),
     path('api/', include('armas.urls')),
+    path('api/', include('talentos.urls')),
 ]
