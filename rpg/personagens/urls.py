@@ -1,7 +1,8 @@
 from rest_framework.routers import DefaultRouter
-from .views import ViewSetPersonagem
+from .views import ViewSetPersonagem, ViewSetPersonagemArma
 
 router = DefaultRouter()
-router.register('personagens', ViewSetPersonagem)
-
+router.register('personagens', ViewSetPersonagem, basename='personagens')
+router.register('personagem-armas', ViewSetPersonagemArma, basename='personagem-armas')
+#router.register('personagem-armadura', ViewSetPersonagemArmadura, basename='personagem-armadura')
 urlpatterns = router.urls

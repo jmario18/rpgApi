@@ -1,5 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.exceptions import ValidationError
+from armas.models import Arma
+from armaduras.models import Armadura
 
 # Create your models here.
 
@@ -15,3 +18,24 @@ class Personagem(models.Model):
 
     def __str__(self):
         return self.nome
+    
+class PersonagemArma(models.Model):
+
+    personagem = models.ForeignKey(Personagem, on_delete=models.CASCADE,related_name="armas")
+    arma = models.ForeignKey(Arma, on_delete=models.CASCADE, related_name="donos")
+
+    quantidade = models.PositiveIntegerField(default=0)
+    equipado = models.PositiveIntegerField(default=0)
+
+    def __str__(self):
+        return f"{self.personagem} - {self.arma} ({self.quantidade})"
+    
+class PersonagemArmadura(models.Model):
+    
+    personagem = models.ForeignKey(Personagem, on_delete=models.CASCADE, related_name="armaduras")
+    armadura = models.ForeignKey(Armadura, on_delete=models.CASCADE, related_name="donos")
+
+    equipado = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"{self.personagem} - {self.armadura}"
