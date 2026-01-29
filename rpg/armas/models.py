@@ -17,6 +17,7 @@ class Arma(models.Model):
     ]
 
     dono = models.ForeignKey(User, on_delete=models.CASCADE, related_name='armas', blank=True)
+    public = models.BooleanField(default=False)
     nome = models.CharField(max_length=50)
     tipo = models.CharField(default='Simples',max_length=7, choices=TIPO_ARMA)
     n_dado = models.IntegerField(default=1)

@@ -1,9 +1,17 @@
 from rest_framework.permissions import BasePermission, SAFE_METHODS
 
 class EhDonoOuAdmin(BasePermission):
-    def tem_permissao(self, request, view, obj):
+    def has_permission(self, request, view):
+        # Allow access to authenticated users; object checks handled separately
+        return True
+
+    def has_object_permission(self, request, view, obj):
         if request.user.is_staff:
             return True
+
         if request.method in SAFE_METHODS:
-            return True
-        return obj.dono == request.user
+            # read: allow if public or owner
+            return getattr(obj, 'public', False) or getattr(obj, 'dono', None) == request.user
+
+        # write: only owner
+        return getattr(obj, 'dono', None) == request.user

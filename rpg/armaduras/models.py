@@ -10,6 +10,7 @@ class Armadura(models.Model):
     ]
 
     dono = models.ForeignKey(User, on_delete=models.CASCADE, related_name='armaduras', blank=True)
+    public = models.BooleanField(default=False)
     nome = models.CharField(max_length=100)
     tipo = models.CharField(max_length=10, choices=TIPOS_ARMADURA)
     classeDeArmadura = models.PositiveIntegerField()
